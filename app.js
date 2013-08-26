@@ -6,9 +6,13 @@
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
-  , form = require('./routes/form')
   , http = require('http')
   , path = require('path');
+
+var dbinterface = require("./server/db");
+dbinterface.open(function() {
+	
+});
 
 var app = express();
 
@@ -31,9 +35,17 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/form', form.insert);
+
+/*
+ * user
+ */
 app.get('/users', user.list);
+app.get('/users/create', user.create_view);
+app.post('/users/create', user.create);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
+
+
+

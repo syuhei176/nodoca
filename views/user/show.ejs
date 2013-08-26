@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>create user</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    </script>
+  </head>
+  <body>
+    <h1>show users</h1>
+    <table>
+    <% for(var i=0;i < docs.length;i++) { %>
+    <tr>
+    <td><%=docs[i].name%></td>
+    <td><%=docs[i].email%></td>
+    </tr>
+    <% } %>
+    </table>
+  </body>
+</html>

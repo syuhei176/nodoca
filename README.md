@@ -1,4 +1,7 @@
-Web-Application
+nodoca for nodejs Web-Application
 ===============
 
-Web Application with clooca.
+clooca上で提供されているnodocaツールと一緒にご利用ください。
+http://www.clooca.com/market-page/nodoca
+
+Document : http://www.clooca.com/m/nodoca/doc

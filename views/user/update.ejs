@@ -1,0 +1,21 @@
+ 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>update user</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>update user</h1>
+    <form action="/user/update" method="post">
+    	<input type="hidden" name="id" value="<%=doc._id%>" />      
+      
+    	<div><span>name</span><input type="text" name="name" value="<%=doc.name%>" /></div>      
+      
+      
+    	<div><span>email</span><input type="text" name="email" value="<%=doc.email%>" /></div>      
+      
+    	<input type="submit" value="update"/>
+    </form>
+  </body>
+</html>

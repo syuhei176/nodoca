@@ -9,37 +9,45 @@ var mongodb = require("mongodb"),
  * GET users listing.
  */
 
-var collection_name = "users";
+var collection_name = "books";
 
 exports.list = function(req, res){
 	var collection = new mongodb.Collection(dbinterface, collection_name);
 	collection.find({},{},{limit:10}).toArray(function(err, docs) {
-		res.render('user/show.ejs', {docs : docs});
+		res.render('book/show.ejs', {docs : docs});
 	})
 };
 
 exports.create_view = function(req, res){
-	res.render('user/create.ejs', { title: 'Express' });
+	res.render('book/create.ejs', { title: 'Express' });
 };
 
 exports.create = function(req, res){
       
-	var name = req.param("name");
+	var stock = req.param("stock");
 
-	var email = req.param("email");
+	var price = req.param("price");
+
+	var title = req.param("title");
+
+	var author = req.param("author");
 
 
 
 	var collection = new mongodb.Collection(dbinterface, collection_name);
     var doc = {};
       
-    doc.name = name;
+    doc.stock = stock;
 
-    doc.email = email;
+    doc.price = price;
+
+    doc.title = title;
+
+    doc.author = author;
 
 
     collection.insert(doc, function() {
-    	res.redirect("/users")
+    	res.redirect("/books")
     });
 
 };
@@ -49,7 +57,7 @@ exports.update_view = function(req, res){
 	var collection = new mongodb.Collection(dbinterface, collection_name);
 	collection.find({_id:new BSON.ObjectID(id)}, {}, {limit:1}).toArray(function(err, docs) {
 		if(docs.length > 0) {
-			res.render('user/update.ejs', { doc : docs[0] });
+			res.render('book/update.ejs', { doc : docs[0] });
 		}else{
 			res.status(404).send("not found");
 		}
@@ -59,21 +67,29 @@ exports.update_view = function(req, res){
 exports.update = function(req, res){
 	var id = req.param("id");
 
-	var name = req.param("name");
+	var stock = req.param("stock");
 
-	var email = req.param("email");
+	var price = req.param("price");
+
+	var title = req.param("title");
+
+	var author = req.param("author");
 
 	var collection = new mongodb.Collection(dbinterface, collection_name);
     var doc = {};
 
-    doc.name = name;
+    doc.stock = stock;
 
-    doc.email = email;
+    doc.price = price;
+
+    doc.title = title;
+
+    doc.author = author;
 
 	collection.update({_id:new BSON.ObjectID(id)},
 			{$set: doc},
 			{safe:true,multi:false,upsert:false}, function() {
-               res.redirect("/users")
+               res.redirect("/books")
 			});
 
 };

@@ -1,0 +1,27 @@
+ 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>update book</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>update book</h1>
+    <form action="/book/update" method="post">
+    	<input type="hidden" name="id" value="<%=doc._id%>" />      
+      
+    	<div><span>stock</span><input type="number" name="stock" value="<%=doc.stock%>" /></div>      
+      
+      
+    	<div><span>price</span><input type="number" name="price" value="<%=doc.price%>" /></div>      
+      
+      
+    	<div><span>title</span><input type="text" name="title" value="<%=doc.title%>" /></div>      
+      
+      
+    	<div><span>author</span><input type="text" name="author" value="<%=doc.author%>" /></div>      
+      
+    	<input type="submit" value="update"/>
+    </form>
+  </body>
+</html>
